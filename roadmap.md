@@ -12,7 +12,7 @@
 - [x] Change published site URL slug to aman-pm (user asked for "Aman_pm"; underscore not valid → aman-pm) and publish. Publishing requested; expected URL https://aman-pm.lovable.app.
 - [x] Add Amex data governance case study: detail page at /case-studies/amex-data-governance-risk, inserted as the 2nd case study card, with the ~$100M and 90%+ figures merged into one stat tile.
 - [x] Case studies section: added the Amex question as a lead line above the cards, removed the 4th card (Amex operational risk), repointed the 10% stat tile and the Apple TV "Next" link, and let the last odd card span the row.
-- [x] My story: replaced the "photo gallery — coming soon" placeholder with the uploaded cricket photo and the caption "Awarded by ex Chief Minister of Bihar".
+- [x] My story: replaced the "photo gallery — coming soon" placeholder with the uploaded cricket photo and the caption "Awarded by Chief Minister of Bihar".
 - [x] Homepage stat cards reordered to Mastercard, Amex, Apple TV so the strip matches the case study card order.
 - [x] Case study cards: added highlight badges to cards 01 and 02 (same pill style as 03), removed grid items-start so all three cards are equal height with bottom links aligned.
 - [x] LinkedIn section: refreshed to the latest analytics screenshot — 536,619 impressions (was 488,409), +541% vs prior 365 days (was +457%), chart redrawn as a flat year with a late steep surge; verified in preview.

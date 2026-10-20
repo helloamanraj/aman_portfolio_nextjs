@@ -180,7 +180,7 @@ const storyGallery = [
   {
     src: awardPhoto.url,
     alt: "Aman Raj with teammates and the then Chief Minister of Bihar at a cricket camp felicitation",
-    caption: "Awarded by ex Chief Minister of Bihar",
+    caption: "Awarded by Chief Minister of Bihar",
     icon: Trophy,
     w: 1920,
     h: 1253,
