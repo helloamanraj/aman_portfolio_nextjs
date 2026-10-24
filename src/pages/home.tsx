@@ -99,6 +99,30 @@ const builds = [
   },
 ];
 
+const writingArticles = [
+  {
+    date: "2026-10-08",
+    displayDate: "Oct 8, 2026",
+    title: "Data structures in Python and when to use them",
+    description: "How to choose the right way to store and access values.",
+    url: "https://www.askpython.com/python/data-structures-in-python",
+  },
+  {
+    date: "2026-10-06",
+    displayDate: "Oct 6, 2026",
+    title: "Type hinting and annotations in Python",
+    description: "Record what a function expects and returns.",
+    url: "https://www.askpython.com/python/examples/type-hinting-and-annotations",
+  },
+  {
+    date: "2026-04-25",
+    displayDate: "Apr 25, 2026",
+    title: "Creating a Python Telegram bot",
+    description: "Build a working bot from setup to first reply.",
+    url: "https://www.askpython.com/python/examples/python-telegram-bot",
+  },
+];
+
 const stats = [
   { value: "90%+", label: "less manual billing effort, from ~200 to under 10 hours a month, across a ~$100M product suite", source: "Mastercard billing automation", href: "/case-studies/mastercard-billing-automation" },
   { value: "10%", label: "contributed to a 10% reduction in operational risk events", source: "Amex data governance", href: "/case-studies/amex-data-governance-risk" },
@@ -395,6 +419,7 @@ export default function Index() {
             <a href="#work" className="hover:text-foreground">Case studies</a>
             <a href="#story" className="hover:text-foreground">Story</a>
             <a href="#builds" className="hover:text-foreground">Builds</a>
+            <a href="#writing" className="hover:text-foreground">Writing</a>
             <a href="#contact" className="hover:text-foreground">Contact</a>
           </nav>
           <ThemeToggle />
@@ -460,7 +485,7 @@ export default function Index() {
 
 
         <Section id="work" title="Featured case studies">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid items-start gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {cases.map((c, i) => <CaseCard key={c.title} c={c} i={i} />)}
           </div>
         </Section>
@@ -556,6 +581,50 @@ export default function Index() {
             View all repositories <ArrowUpRight className="h-4 w-4" />
           </a>
         </Section>
+
+        <section id="writing" className="scroll-mt-20 border-t border-border py-20 md:py-28">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Writing</p>
+          <h2 className="mt-3 text-xl font-bold tracking-tight sm:text-2xl">
+            Python articles on AskPython
+          </h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            19 published tutorials on Python, data and automation.
+          </p>
+
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {writingArticles.map((article) => (
+              <a
+                key={article.url}
+                href={article.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex h-full flex-col rounded-2xl border border-border bg-card p-5 transition-colors hover:border-primary"
+              >
+                <time dateTime={article.date} className="text-xs text-muted-foreground">
+                  {article.displayDate}
+                </time>
+                <h3 className="mt-2 font-semibold leading-snug tracking-tight group-hover:text-primary">
+                  {article.title}
+                </h3>
+                <p className="mt-2 flex-1 text-sm text-muted-foreground">
+                  {article.description}
+                </p>
+                <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary">
+                  Read on AskPython <ArrowUpRight className="h-4 w-4" />
+                </span>
+              </a>
+            ))}
+          </div>
+
+          <a
+            href="https://www.askpython.com/?s=Aman+Raj"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center gap-1 rounded-lg border border-border px-4 py-2 text-sm font-semibold transition-colors hover:border-primary hover:text-primary"
+          >
+            View all 19 articles <ArrowUpRight className="h-4 w-4" />
+          </a>
+        </section>
 
         <Section id="linkedin" title="LinkedIn">
           <a href={LINKS.linkedin} target="_blank" rel="noreferrer" className="group block rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary sm:p-8">
@@ -670,17 +739,17 @@ export default function Index() {
         </div>
       )}
 
-      <footer id="contact" className="bg-[#1d1f24] px-6 py-10 text-[#f4f1ec] sm:px-10 sm:py-20">
-        <div className="mx-auto flex max-w-xl flex-col gap-6">
-          <div className="flex w-fit items-center gap-2.5 rounded-full border border-[#46cdb0] bg-[#1f3330] px-[18px] py-2.5 text-[15px] font-medium text-[#46cdb0]">
-            <span className="h-2.5 w-2.5 rounded-full bg-[#46cdb0]" aria-hidden="true" />
+      <footer id="contact" className="border-t border-border bg-background px-6 py-10 text-foreground sm:py-20">
+        <div className="mx-auto flex max-w-5xl flex-col gap-6">
+          <div className="flex w-fit items-center gap-2.5 rounded-full border border-primary/40 bg-primary/10 px-[18px] py-2.5 text-[15px] font-medium text-primary">
+            <span className="h-2.5 w-2.5 rounded-full bg-primary" aria-hidden="true" />
             Open for collaboration
           </div>
 
           <h2 className="text-[44px] font-extrabold leading-[1.05] tracking-tight">Let&apos;s talk.</h2>
 
-          <p className="text-[17px] leading-relaxed text-[#a9adb5]">
-            Open for collaboration in payments, data and analytics. Best reached by email or LinkedIn.
+          <p className="text-[17px] leading-relaxed text-muted-foreground">
+            Open for side projects and collaboration in payments, data, and analytics. Best reached via email or LinkedIn.
           </p>
 
           <a
@@ -688,33 +757,33 @@ export default function Index() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Book a 1:1 session on Topmate"
-            className="flex items-center gap-4 rounded-[20px] border border-[#46cdb0] bg-[#1f2b2b] p-5 transition-colors hover:bg-[#243230] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#46cdb0]"
+            className="flex w-full items-center gap-4 rounded-[20px] border border-primary/50 bg-card p-5 transition-colors hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           >
-            <span className="flex h-[52px] w-[52px] flex-none items-center justify-center rounded-[14px] bg-[#46cdb0] text-[#0b1a16]">
+            <span className="flex h-[52px] w-[52px] flex-none items-center justify-center rounded-[14px] bg-primary text-primary-foreground">
               <CalendarCheck className="h-[26px] w-[26px]" aria-hidden="true" />
             </span>
             <span className="flex flex-1 flex-col gap-1">
-              <span className="text-xs font-semibold uppercase tracking-[0.08em] text-[#46cdb0]">
+              <span className="text-xs font-semibold uppercase tracking-[0.08em] text-primary">
                 Book a 1:1
               </span>
-              <span className="text-lg font-extrabold">Talk to me on Topmate</span>
-              <span className="text-sm leading-snug text-[#a9adb5]">
-                Product, payments and analytics. Pick a slot that works for you.
+              <span className="text-lg font-extrabold text-card-foreground">Talk to me on Topmate</span>
+              <span className="text-sm leading-snug text-muted-foreground">
+                Get career guidance, learn how to crack interviews, and let&apos;s get connected.
               </span>
             </span>
-            <ArrowUpRight className="h-[22px] w-[22px] flex-none text-[#46cdb0]" aria-hidden="true" />
+            <ArrowUpRight className="h-[22px] w-[22px] flex-none text-primary" aria-hidden="true" />
           </a>
 
-          <div className="flex items-center gap-3.5 text-[13px] tracking-wide text-[#8a8e97]">
-            <span className="h-px flex-1 bg-[#33363d]" aria-hidden="true" />
+          <div className="flex w-full items-center gap-3.5 text-[13px] tracking-wide text-muted-foreground">
+            <span className="h-px flex-1 bg-border" aria-hidden="true" />
             <span>or reach out directly</span>
-            <span className="h-px flex-1 bg-[#33363d]" aria-hidden="true" />
+            <span className="h-px flex-1 bg-border" aria-hidden="true" />
           </div>
 
           <div className="flex flex-wrap gap-3">
             <a
               href={LINKS.email}
-              className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-[#46cdb0] bg-[#46cdb0] px-6 text-[17px] font-semibold text-[#0b1a16] transition-colors hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#46cdb0]"
+              className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-primary bg-primary px-6 text-[17px] font-semibold text-primary-foreground transition-colors hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
               <Mail className="h-5 w-5" aria-hidden="true" />
               Email
@@ -723,7 +792,7 @@ export default function Index() {
               href={LINKS.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-[#3a3d45] px-6 text-[17px] font-semibold transition-colors hover:border-[#46cdb0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#46cdb0]"
+              className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-border px-6 text-[17px] font-semibold transition-colors hover:border-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
               <Linkedin className="h-5 w-5" aria-hidden="true" />
               LinkedIn
@@ -732,14 +801,14 @@ export default function Index() {
               href={LINKS.x}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-[#3a3d45] px-6 text-[17px] font-semibold transition-colors hover:border-[#46cdb0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#46cdb0]"
+              className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-border px-6 text-[17px] font-semibold transition-colors hover:border-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
               <XIcon className="h-[18px] w-[18px]" />
               X
             </a>
           </div>
 
-          <p className="mt-8 text-base text-[#8a8e97]">© 2026 Aman Raj</p>
+          <p className="mt-8 text-base text-muted-foreground">© 2026 Aman Raj</p>
         </div>
       </footer>
 

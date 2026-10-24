@@ -3,13 +3,13 @@ import { Analytics } from "@vercel/analytics/next";
 import "@/styles.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://damnitrahul.com"),
+  metadataBase: new URL("https://amanraj-pm.vercel.app"),
   applicationName: "Aman Raj Portfolio",
   authors: [{ name: "Aman Raj" }],
   icons: {
-    icon: [{ url: "https://damnitrahul.com/favicon.ico", rel: "icon", type: "image/x-icon" }],
-    shortcut: "https://damnitrahul.com/favicon.ico",
-    apple: "https://damnitrahul.com/favicon.ico",
+    icon: [{ url: "/favicon.ico", rel: "icon", type: "image/x-icon" }],
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
   },
 };
 
