@@ -1,7 +1,7 @@
 "use client";
 import Link from "@/components/LegacyLink";
 import { useEffect, useState } from "react";
-import { ArrowUpRight, BookOpen, ChevronDown, Download, Eye, Flame, GitCommitHorizontal, Github, Linkedin, Mail, Medal, Shirt, Star, Trophy } from "lucide-react";
+import { ArrowUpRight, BookOpen, CalendarCheck, ChevronDown, Download, Eye, Flame, GitCommitHorizontal, Github, Linkedin, Mail, Medal, Shirt, Star, Trophy } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import awardPhoto from "@/assets/cricket-award.jpg.asset.json";
@@ -20,11 +20,11 @@ const DESC =
   "7+ years turning data into revenue-critical product decisions across fintech and enterprise data products. I also build the tools: automation, analytics and AI-powered products.";
 
 
-// TODO: replace with real links
 const EMAIL_ADDRESS = "amanraj.du.or.19@gmail.com";
 
 const LINKS = {
   resume: cvResume.url,
+  topmate: "https://topmate.io/aman_raj10",
   linkedin: "https://www.linkedin.com/in/helloamanraj/",
   github: "https://github.com/helloamanraj",
   email: `mailto:${EMAIL_ADDRESS}`,
@@ -671,21 +671,75 @@ export default function Index() {
       )}
 
       <footer id="contact" className="border-t border-border bg-secondary">
-        <div className="mx-auto max-w-5xl px-6 py-20">
-          <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
-            <span className="h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
+        <div className="mx-auto flex max-w-xl flex-col gap-6 px-6 py-10 sm:px-10 sm:py-20">
+          <span className="inline-flex w-fit items-center gap-2.5 rounded-full border border-primary/40 bg-primary/10 px-[18px] py-2.5 text-sm font-medium text-primary">
+            <span className="h-2.5 w-2.5 rounded-full bg-primary" aria-hidden="true" />
             Open for collaboration
           </span>
-          <h2 className="mt-5 text-3xl font-extrabold tracking-tight md:text-4xl">Let's talk.</h2>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
-            Open to senior product roles in payments, data and analytics, and to collaborations. Best reached by email or LinkedIn.
+
+          <h2 className="text-[44px] font-extrabold leading-[1.05] tracking-tight">Let&apos;s talk.</h2>
+
+          <p className="text-[17px] leading-relaxed text-muted-foreground">
+            Open to senior product roles and collaboration in payments, data and analytics. Best reached by email or LinkedIn.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href={LINKS.email} className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"><Mail className="h-4 w-4" /> Email</a>
-            <a href={LINKS.linkedin} target="_blank" rel="noreferrer" className={btn}><Linkedin className="h-4 w-4" /> LinkedIn</a>
-            <a href={LINKS.x} target="_blank" rel="noreferrer noopener" className={btn}><XIcon className="h-4 w-4" /> X</a>
+
+          <a
+            href={LINKS.topmate}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Book a 1:1 session on Topmate"
+            className="flex items-center gap-4 rounded-[20px] border border-primary/50 bg-card p-5 transition-colors hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            <span className="flex h-[52px] w-[52px] flex-none items-center justify-center rounded-[14px] bg-primary text-primary-foreground">
+              <CalendarCheck className="h-[26px] w-[26px]" aria-hidden="true" />
+            </span>
+            <span className="flex flex-1 flex-col gap-1">
+              <span className="text-xs font-semibold uppercase tracking-[0.08em] text-primary">
+                Book a 1:1
+              </span>
+              <span className="text-lg font-extrabold text-card-foreground">Talk to me on Topmate</span>
+              <span className="text-sm leading-snug text-muted-foreground">
+                Product, payments and analytics. Pick a slot that works for you.
+              </span>
+            </span>
+            <ArrowUpRight className="h-[22px] w-[22px] flex-none text-primary" aria-hidden="true" />
+          </a>
+
+          <div className="flex items-center gap-3.5 text-[13px] tracking-wide text-muted-foreground">
+            <span className="h-px flex-1 bg-border" aria-hidden="true" />
+            <span>or reach out directly</span>
+            <span className="h-px flex-1 bg-border" aria-hidden="true" />
           </div>
-          <p className="mt-16 text-sm text-muted-foreground">© 2026 Aman Raj</p>
+
+          <div className="flex flex-wrap gap-3">
+            <a
+              href={LINKS.email}
+              className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-primary bg-primary px-6 text-[17px] font-semibold text-primary-foreground transition-opacity hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            >
+              <Mail className="h-5 w-5" aria-hidden="true" />
+              Email
+            </a>
+            <a
+              href={LINKS.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-border px-6 text-[17px] font-semibold transition-colors hover:border-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            >
+              <Linkedin className="h-5 w-5" aria-hidden="true" />
+              LinkedIn
+            </a>
+            <a
+              href={LINKS.x}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-border px-6 text-[17px] font-semibold transition-colors hover:border-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            >
+              <XIcon className="h-[18px] w-[18px]" />
+              X
+            </a>
+          </div>
+
+          <p className="mt-8 text-base text-muted-foreground">© 2026 Aman Raj</p>
         </div>
       </footer>
     </div>
