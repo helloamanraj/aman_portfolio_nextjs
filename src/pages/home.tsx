@@ -670,17 +670,17 @@ export default function Index() {
         </div>
       )}
 
-      <footer id="contact" className="border-t border-border bg-secondary">
-        <div className="mx-auto flex max-w-xl flex-col gap-6 px-6 py-10 sm:px-10 sm:py-20">
-          <span className="inline-flex w-fit items-center gap-2.5 rounded-full border border-primary/40 bg-primary/10 px-[18px] py-2.5 text-sm font-medium text-primary">
-            <span className="h-2.5 w-2.5 rounded-full bg-primary" aria-hidden="true" />
+      <footer id="contact" className="bg-[#1d1f24] px-6 py-10 text-[#f4f1ec] sm:px-10 sm:py-20">
+        <div className="mx-auto flex max-w-xl flex-col gap-6">
+          <div className="flex w-fit items-center gap-2.5 rounded-full border border-[#46cdb0] bg-[#1f3330] px-[18px] py-2.5 text-[15px] font-medium text-[#46cdb0]">
+            <span className="h-2.5 w-2.5 rounded-full bg-[#46cdb0]" aria-hidden="true" />
             Open for collaboration
-          </span>
+          </div>
 
           <h2 className="text-[44px] font-extrabold leading-[1.05] tracking-tight">Let&apos;s talk.</h2>
 
-          <p className="text-[17px] leading-relaxed text-muted-foreground">
-            Open to senior product roles and collaboration in payments, data and analytics. Best reached by email or LinkedIn.
+          <p className="text-[17px] leading-relaxed text-[#a9adb5]">
+            Open for collaboration in payments, data and analytics. Best reached by email or LinkedIn.
           </p>
 
           <a
@@ -688,33 +688,33 @@ export default function Index() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Book a 1:1 session on Topmate"
-            className="flex items-center gap-4 rounded-[20px] border border-primary/50 bg-card p-5 transition-colors hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            className="flex items-center gap-4 rounded-[20px] border border-[#46cdb0] bg-[#1f2b2b] p-5 transition-colors hover:bg-[#243230] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#46cdb0]"
           >
-            <span className="flex h-[52px] w-[52px] flex-none items-center justify-center rounded-[14px] bg-primary text-primary-foreground">
+            <span className="flex h-[52px] w-[52px] flex-none items-center justify-center rounded-[14px] bg-[#46cdb0] text-[#0b1a16]">
               <CalendarCheck className="h-[26px] w-[26px]" aria-hidden="true" />
             </span>
             <span className="flex flex-1 flex-col gap-1">
-              <span className="text-xs font-semibold uppercase tracking-[0.08em] text-primary">
+              <span className="text-xs font-semibold uppercase tracking-[0.08em] text-[#46cdb0]">
                 Book a 1:1
               </span>
-              <span className="text-lg font-extrabold text-card-foreground">Talk to me on Topmate</span>
-              <span className="text-sm leading-snug text-muted-foreground">
+              <span className="text-lg font-extrabold">Talk to me on Topmate</span>
+              <span className="text-sm leading-snug text-[#a9adb5]">
                 Product, payments and analytics. Pick a slot that works for you.
               </span>
             </span>
-            <ArrowUpRight className="h-[22px] w-[22px] flex-none text-primary" aria-hidden="true" />
+            <ArrowUpRight className="h-[22px] w-[22px] flex-none text-[#46cdb0]" aria-hidden="true" />
           </a>
 
-          <div className="flex items-center gap-3.5 text-[13px] tracking-wide text-muted-foreground">
-            <span className="h-px flex-1 bg-border" aria-hidden="true" />
+          <div className="flex items-center gap-3.5 text-[13px] tracking-wide text-[#8a8e97]">
+            <span className="h-px flex-1 bg-[#33363d]" aria-hidden="true" />
             <span>or reach out directly</span>
-            <span className="h-px flex-1 bg-border" aria-hidden="true" />
+            <span className="h-px flex-1 bg-[#33363d]" aria-hidden="true" />
           </div>
 
           <div className="flex flex-wrap gap-3">
             <a
               href={LINKS.email}
-              className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-primary bg-primary px-6 text-[17px] font-semibold text-primary-foreground transition-opacity hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-[#46cdb0] bg-[#46cdb0] px-6 text-[17px] font-semibold text-[#0b1a16] transition-colors hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#46cdb0]"
             >
               <Mail className="h-5 w-5" aria-hidden="true" />
               Email
@@ -723,7 +723,7 @@ export default function Index() {
               href={LINKS.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-border px-6 text-[17px] font-semibold transition-colors hover:border-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-[#3a3d45] px-6 text-[17px] font-semibold transition-colors hover:border-[#46cdb0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#46cdb0]"
             >
               <Linkedin className="h-5 w-5" aria-hidden="true" />
               LinkedIn
@@ -732,16 +732,17 @@ export default function Index() {
               href={LINKS.x}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-border px-6 text-[17px] font-semibold transition-colors hover:border-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-[#3a3d45] px-6 text-[17px] font-semibold transition-colors hover:border-[#46cdb0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#46cdb0]"
             >
               <XIcon className="h-[18px] w-[18px]" />
               X
             </a>
           </div>
 
-          <p className="mt-8 text-base text-muted-foreground">© 2026 Aman Raj</p>
+          <p className="mt-8 text-base text-[#8a8e97]">© 2026 Aman Raj</p>
         </div>
       </footer>
+
     </div>
   );
 }
