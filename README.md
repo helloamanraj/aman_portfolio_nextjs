@@ -13,6 +13,10 @@ npm run dev
 
 Open http://localhost:3000. Production checks: `npm run build`, then `npm run start`.
 
+## Analytics
+
+Vercel Analytics is enabled by default. To enable Google Analytics 4, create a Web data stream and set its Measurement ID (`G-...`) as `NEXT_PUBLIC_GA_ID` in `.env.local` for local development and in the Vercel project environment variables for production. The Google Analytics component is omitted when the variable is unset. Analytics only records visits after it has been configured and deployed.
+
 ## Routes
 
 - `/` — portfolio homepage
