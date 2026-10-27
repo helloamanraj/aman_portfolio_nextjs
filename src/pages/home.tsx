@@ -1,7 +1,7 @@
 "use client";
 import Link from "@/components/LegacyLink";
-import { useEffect, useState } from "react";
-import { ArrowUpRight, BookOpen, CalendarCheck, ChevronDown, Download, Eye, Flame, GitCommitHorizontal, Github, Linkedin, Mail, Medal, Shirt, Star, Trophy } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight, BookOpen, CalendarCheck, ChevronDown, Download, Eye, Flame, GitCommitHorizontal, Github, Linkedin, Mail, Medal, Shirt, Shuffle, Star, Trophy } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import awardPhoto from "@/assets/cricket-award.jpg.asset.json";
@@ -14,13 +14,43 @@ import deloitteLogo from "@/assets/deloitte.png.asset.json";
 import cognizantLogo from "@/assets/cognizant.png.asset.json";
 import cvResume from "@/assets/cv-resume.pdf.asset.json";
 
-const SUBTITLE = "Senior Product Manager and Product Builder · Payments Intelligence and Analytics";
+const SUBTITLE = "Product Manager and Builder · Payments, Risk, Analytics and AI";
 const TITLE = `Aman Raj — ${SUBTITLE}`;
 const DESC =
-  "7+ years turning data into revenue-critical product decisions across fintech and enterprise data products. I also build the tools: automation, analytics and AI-powered products.";
+  "Turning payments and risk data into product decisions that move revenue and cut risk. 7+ years across fintech and enterprise data, building the automation, analytics and AI tools in‑house.";
 
 
 const EMAIL_ADDRESS = "amanraj.du.or.19@gmail.com";
+
+const skills = [
+  { name: "Product strategy", style: "a" },
+  { name: "Roadmapping", style: "b" },
+  { name: "PRD writing", style: "a" },
+  { name: "NFR prioritisation", style: "c" },
+  { name: "Product analytics", style: "c" },
+  { name: "SQL", style: "b" },
+  { name: "Python", style: "a" },
+  { name: "Power BI", style: "c" },
+  { name: "Mixpanel", style: "b" },
+  { name: "Data visualisation", style: "c" },
+  { name: "KPI dashboards", style: "b" },
+  { name: "Gen AI", style: "a" },
+  { name: "Reconciliation and QA", style: "c" },
+  { name: "Operational risk", style: "b" },
+  { name: "Data governance", style: "c" },
+  { name: "Credit risk modelling", style: "b" },
+  { name: "Workflow automation", style: "a" },
+  { name: "AI-powered tools", style: "c" },
+  { name: "NLP", style: "b" },
+  { name: "Azure AI", style: "c" },
+  { name: "Stakeholder management", style: "b" },
+  { name: "Agile delivery", style: "c" },
+  { name: "GitHub", style: "b" },
+  { name: "Vercel", style: "c" },
+  { name: "Figma", style: "b" },
+  { name: "n8n", style: "c" },
+  { name: "Machine learning", style: "b" },
+] as const;
 
 const LINKS = {
   resume: cvResume.url,
@@ -350,6 +380,129 @@ function Section({ id, title, children }: { id: string; title: string; children:
   );
 }
 
+type SkillOffset = { x: number; y: number };
+
+function SkillBoard() {
+  const [orderedSkills, setOrderedSkills] = useState([...skills]);
+  const [offsets, setOffsets] = useState<Record<string, SkillOffset>>({});
+  const [draggingSkill, setDraggingSkill] = useState<string | null>(null);
+  const boardRef = useRef<HTMLDivElement>(null);
+  const dragRef = useRef<{
+    name: string;
+    pointerX: number;
+    pointerY: number;
+    offset: SkillOffset;
+    tileLeft: number;
+    tileTop: number;
+    tileWidth: number;
+    tileHeight: number;
+  } | null>(null);
+
+  const shuffleSkills = () => {
+    setOrderedSkills((current) => {
+      const shuffled = [...current];
+      for (let i = shuffled.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled;
+    });
+    setOffsets(Object.fromEntries(skills.map(({ name }) => [
+      name,
+      { x: Math.round(Math.random() * 20 - 10), y: Math.round(Math.random() * 20 - 10) },
+    ])));
+  };
+
+  const startDrag = (event: React.PointerEvent<HTMLDivElement>, name: string) => {
+    if (!boardRef.current) return;
+    const tile = event.currentTarget;
+    const rect = tile.getBoundingClientRect();
+    const offset = offsets[name] ?? { x: 0, y: 0 };
+    dragRef.current = {
+      name,
+      pointerX: event.clientX,
+      pointerY: event.clientY,
+      offset,
+      tileLeft: rect.left - offset.x,
+      tileTop: rect.top - offset.y,
+      tileWidth: rect.width,
+      tileHeight: rect.height,
+    };
+    tile.setPointerCapture(event.pointerId);
+    setDraggingSkill(name);
+  };
+
+  const moveDrag = (event: React.PointerEvent<HTMLDivElement>) => {
+    const drag = dragRef.current;
+    const board = boardRef.current;
+    if (!drag || !board) return;
+    const rect = board.getBoundingClientRect();
+    const left = rect.left + board.clientLeft;
+    const top = rect.top + board.clientTop;
+    const dx = event.clientX - drag.pointerX;
+    const dy = event.clientY - drag.pointerY;
+    const x = Math.min(
+      left + board.clientWidth - drag.tileWidth - drag.tileLeft,
+      Math.max(left - drag.tileLeft, drag.offset.x + dx),
+    );
+    const y = Math.min(
+      top + board.clientHeight - drag.tileHeight - drag.tileTop,
+      Math.max(top - drag.tileTop, drag.offset.y + dy),
+    );
+    setOffsets((current) => ({ ...current, [drag.name]: { x, y } }));
+  };
+
+  const endDrag = () => {
+    dragRef.current = null;
+    setDraggingSkill(null);
+  };
+
+  return (
+    <section id="skills" className="scroll-mt-20 border-t border-border py-20 md:py-28">
+      <div className="mb-10 flex flex-wrap items-center justify-between gap-5">
+        <div>
+          <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Skill board</h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            The tools and methods I use. Drag the tiles to arrange the board.
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={shuffleSkills}
+          className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-semibold transition-colors hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        >
+          <Shuffle aria-hidden="true" className="h-4 w-4" />
+          Shuffle
+        </button>
+      </div>
+      <div
+        ref={boardRef}
+        role="list"
+        aria-label="Skills"
+        className="skill-board flex flex-wrap items-center justify-center gap-x-6 gap-y-[22px] rounded-2xl border border-border bg-card px-5 py-9 md:px-10 md:py-12"
+      >
+        {orderedSkills.map(({ name, style }) => {
+          const offset = offsets[name] ?? { x: 0, y: 0 };
+          return (
+            <div
+              key={name}
+              role="listitem"
+              onPointerDown={(event) => startDrag(event, name)}
+              onPointerMove={moveDrag}
+              onPointerUp={endDrag}
+              onPointerCancel={endDrag}
+              className={`skill-tile skill-tile-${style}${draggingSkill === name ? " is-dragging" : ""}`}
+              style={{ transform: `translate(${offset.x}px, ${offset.y}px)` }}
+            >
+              {name}
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 
 function CaseCard({ c, i }: { c: (typeof cases)[number]; i: number }) {
   const [open, setOpen] = useState(false);
@@ -429,7 +582,7 @@ export default function Index() {
       <main id="top" className="mx-auto max-w-5xl px-6">
         <section className="py-24 md:py-36">
           <h1 className="text-5xl font-extrabold tracking-tight md:text-7xl">Aman Raj</h1>
-          <p className="mt-5 text-lg font-semibold text-primary md:text-xl">
+          <p className="mt-5 whitespace-nowrap text-[clamp(0.625rem,2.95vw,1.125rem)] font-semibold tracking-tight text-primary md:text-xl">
             {SUBTITLE}
           </p>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">{DESC}</p>
@@ -483,6 +636,7 @@ export default function Index() {
           </ol>
         </Section>
 
+        <SkillBoard />
 
         <Section id="work" title="Featured case studies">
           <div className="grid items-start gap-6 sm:grid-cols-2 lg:grid-cols-3">
